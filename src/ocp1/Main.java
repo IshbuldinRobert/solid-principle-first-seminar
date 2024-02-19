@@ -1,6 +1,7 @@
 package ocp1;
 
 import ocp1.shape.Shape;
+import ocp1.shape.impl.Rectangle;
 import ocp1.shape.impl.RightTriangle;
 import ocp1.shape.impl.Square;
 
@@ -12,17 +13,14 @@ public class Main {
         List<Shape> shapes = new ArrayList<>();
         shapes.add(new RightTriangle(2, 3));
         shapes.add(new Square(4));
+        shapes.add(new Rectangle(6, 2));
+
         double sumArea = 0;
         for (Shape shape : shapes) {
-            if (shape instanceof RightTriangle) {
-                RightTriangle triangle = (RightTriangle) shape;
-                sumArea += triangle.getLeg1() * triangle.getLeg2() / 2.0;
-            }
-            if (shape instanceof Square) {
-                Square square = (Square) shape;
-                sumArea += Math.pow(square.getSide(), 2);
-            }
+            sumArea += shape.area();
         }
+        // System.out.println(shapes.get(1).area());
+        // System.out.println(shapes.get(0).area());
 
         System.out.printf("Sum of areas equals %f \n", sumArea);
     }
